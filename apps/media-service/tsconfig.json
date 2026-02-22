@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["es2022"],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@mesreltime/shared-config": ["../../packages/shared-config/src/index.ts"],
+      "@mesreltime/shared-logger": ["../../packages/shared-logger/src/index.ts"],
+      "@mesreltime/shared-auth": ["../../packages/shared-auth/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

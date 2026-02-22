@@ -1,0 +1,28 @@
+{
+  "name": "@mesreltime/media-service",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "echo lint media-service",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo test media-service"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.699.0",
+    "@aws-sdk/s3-request-presigner": "^3.699.0",
+    "@fastify/cors": "^10.0.1",
+    "@mesreltime/shared-auth": "workspace:*",
+    "@mesreltime/shared-config": "workspace:*",
+    "@mesreltime/shared-logger": "workspace:*",
+    "fastify": "^5.1.0",
+    "mongoose": "^8.8.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2"
+  }
+}

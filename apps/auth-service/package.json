@@ -1,0 +1,31 @@
+{
+  "name": "@mesreltime/auth-service",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "echo lint auth-service",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo test auth-service"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^10.0.1",
+    "@fastify/cors": "^10.0.1",
+    "@mesreltime/shared-auth": "workspace:*",
+    "@mesreltime/shared-config": "workspace:*",
+    "@mesreltime/shared-logger": "workspace:*",
+    "bcryptjs": "^2.4.3",
+    "fastify": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
+    "tsx": "^4.19.2"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mesreltime/shared-types": ["packages/shared-types/src/index.ts"],
+      "@mesreltime/shared-zod": ["packages/shared-zod/src/index.ts"],
+      "@mesreltime/shared-config": ["packages/shared-config/src/index.ts"],
+      "@mesreltime/shared-logger": ["packages/shared-logger/src/index.ts"],
+      "@mesreltime/shared-auth": ["packages/shared-auth/src/index.ts"],
+      "@mesreltime/shared-cache": ["packages/shared-cache/src/index.ts"]
+    }
+  }
+}

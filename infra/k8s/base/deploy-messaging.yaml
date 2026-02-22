@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messaging-service
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: messaging-service
+  template:
+    metadata:
+      labels:
+        app: messaging-service
+    spec:
+      containers:
+        - name: messaging-service
+          image: ghcr.io/example/mesreltime-messaging-service:latest
+          ports:
+            - containerPort: 4002
+          envFrom:
+            - configMapRef:
+                name: mesreltime-config
+            - secretRef:
+                name: mesreltime-secrets
+          env:
+            - name: PORT
+              value: "4002"
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 4002
+            initialDelaySeconds: 8
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 4002
+            initialDelaySeconds: 15
+            periodSeconds: 20

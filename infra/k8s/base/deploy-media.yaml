@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: media-service
+  template:
+    metadata:
+      labels:
+        app: media-service
+    spec:
+      containers:
+        - name: media-service
+          image: ghcr.io/example/mesreltime-media-service:latest
+          ports:
+            - containerPort: 4004
+          envFrom:
+            - configMapRef:
+                name: mesreltime-config
+            - secretRef:
+                name: mesreltime-secrets
+          env:
+            - name: PORT
+              value: "4004"
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 4004
+            initialDelaySeconds: 8
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 4004
+            initialDelaySeconds: 15
+            periodSeconds: 20
