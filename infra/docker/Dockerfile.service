@@ -11,7 +11,13 @@ RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
 ARG APP_NAME
-RUN pnpm --filter @mesreltime/${APP_NAME} build
+RUN pnpm --filter @mesreltime/shared-types build \
+  && pnpm --filter @mesreltime/shared-zod build \
+  && pnpm --filter @mesreltime/shared-config build \
+  && pnpm --filter @mesreltime/shared-logger build \
+  && pnpm --filter @mesreltime/shared-auth build \
+  && pnpm --filter @mesreltime/shared-cache build \
+  && pnpm --filter @mesreltime/${APP_NAME} build
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
