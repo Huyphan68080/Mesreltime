@@ -8,6 +8,20 @@ Production-oriented monorepo for a Discord/Messenger-style system using Next.js,
 2. `docker compose -f infra/docker/docker-compose.yml up -d`
 3. `pnpm dev`
 
+## Windows FE + Ubuntu Docker backend
+
+Use this mode when frontend runs on Windows and all backend services run on Ubuntu with Docker.
+
+1. Start backend on Ubuntu:
+   - `docker compose -f infra/docker/docker-compose.yml up -d mongodb mongo-init-replica redis minio auth-service messaging-service notification-service media-service api-gateway worker`
+2. Get Ubuntu LAN IP:
+   - `hostname -I`
+3. Set frontend env on Windows (`apps/web/.env.local`):
+   - `NEXT_PUBLIC_API_URL=http://<UBUNTU_IP>:4000`
+   - `NEXT_PUBLIC_SOCKET_URL=http://<UBUNTU_IP>:4002`
+4. Start frontend on Windows:
+   - `pnpm dev`
+
 ## Apps
 
 - `apps/web` - Next.js 14 application.
